@@ -2946,6 +2946,9 @@ func updateSwaggerObjectFromFieldBehavior(s *openapiSchemaObject, j []annotation
 	for _, fb := range j {
 		switch fb {
 		case annotations.FieldBehavior_REQUIRED:
+			if reg.IsIgnoreGoogleAPIFieldBehaviorRequired() {
+				break
+			}
 			if reg.GetUseJSONNamesForFields() {
 				s.Required = append(s.Required, *field.JsonName)
 			} else {

@@ -154,6 +154,9 @@ type Registry struct {
 	// preserveRPCOrder, if true, will ensure the order of paths emitted in openapi swagger files mirror
 	// the order of RPC methods found in proto files. If false, emitted paths will be ordered alphabetically.
 	preserveRPCOrder bool
+
+	// ignoreGoogleAPIFieldBehaviorRequired, if true, ignores `(google.api.field_behavior) = REQUIRED`.
+	ignoreGoogleAPIFieldBehaviorRequired bool
 }
 
 type repeatedFieldSeparator struct {
@@ -838,4 +841,14 @@ func (r *Registry) SetPreserveRPCOrder(preserve bool) {
 // IsPreserveRPCOrder returns preserveRPCOrder
 func (r *Registry) IsPreserveRPCOrder() bool {
 	return r.preserveRPCOrder
+}
+
+// SetIgnoreGoogleAPIFieldBehaviorRequired sets ignoreGoogleAPIFieldBehaviorRequired
+func (r *Registry) SetIgnoreGoogleAPIFieldBehaviorRequired(ignore bool) {
+	r.ignoreGoogleAPIFieldBehaviorRequired = ignore
+}
+
+// IsIgnoreGoogleAPIFieldBehaviorRequired returns ignoreGoogleAPIFieldBehaviorRequired
+func (r *Registry) IsIgnoreGoogleAPIFieldBehaviorRequired() bool {
+	return r.ignoreGoogleAPIFieldBehaviorRequired
 }
